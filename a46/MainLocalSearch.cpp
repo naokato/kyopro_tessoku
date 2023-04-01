@@ -12,10 +12,6 @@ int RandInt(int a, int b) {
   return a + rand() % (b - a + 1);
 }
 
-double Randouble() {
-  return 1.0 * rand() / RAND_MAX;
-}
-
 double calcDistance(int x1, int y1, int x2, int y2) {
   return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
 }
@@ -46,9 +42,7 @@ int main() {
 
     reverse(answer + L, answer + R + 1);
     double currentScore = GetScore();
-    double T = 30.00 - 28.00 * i / 200000;
-    double Probability = exp(min(0.0, (score - currentScore) / T));
-    if (Randouble() < Probability) {
+    if (score >= currentScore) {
       score = currentScore;
     } else {
       // if the score is not good, undo reverse
